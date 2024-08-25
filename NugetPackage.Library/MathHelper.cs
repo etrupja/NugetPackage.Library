@@ -1,4 +1,6 @@
-﻿namespace NugetPackage.Library
+﻿using System;
+
+namespace NugetPackage.Library
 {
     public class MathHelper
     {

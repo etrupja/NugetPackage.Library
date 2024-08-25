@@ -2,12 +2,10 @@
 
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<Nullable>enable</Nullable>
 		<Title>A MathHelper package</Title>
 		<Authors>Ervis Trupja</Authors>
-		<Version>2.2.3</Version>
-		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<Version>2.1.0</Version>
+		<PackageOutputPath>C:/Nuget/Packages</PackageOutputPath>
 	</PropertyGroup>
 
 	<ItemGroup>
