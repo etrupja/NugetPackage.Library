@@ -4,8 +4,12 @@
 		<TargetFramework>net8.0</TargetFramework>
 		<Title>A MathHelper package</Title>
 		<Authors>Ervis Trupja</Authors>
-		<Version>2.1.0</Version>
+		<Version>2.3.2</Version>
 		<PackageOutputPath>C:/Nuget/Packages</PackageOutputPath>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<Optimize>false</Optimize>
 	</PropertyGroup>
 
 	<ItemGroup>
