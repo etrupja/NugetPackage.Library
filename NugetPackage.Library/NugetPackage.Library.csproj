@@ -4,8 +4,14 @@
 		<TargetFramework>net8.0</TargetFramework>
 		<Title>A MathHelper package</Title>
 		<Authors>Ervis Trupja</Authors>
-		<Version>2.3.2</Version>
+		<Version>2.4.1</Version>
 		<PackageOutputPath>C:/Nuget/Packages</PackageOutputPath>
+
+		<DebugType>portable</DebugType>
+		<DebugSymbols>true</DebugSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<IncludeSymbols>true</IncludeSymbols>
+		<IncludeSource>true</IncludeSource>
 	</PropertyGroup>
 
 	<PropertyGroup>
