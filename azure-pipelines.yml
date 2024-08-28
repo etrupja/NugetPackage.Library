@@ -10,7 +10,7 @@ steps:
 - task: UseDotNet@2
   inputs:
     packageType: 'sdk'
-    version: '8.0.0'  # Specify the version compatible with .NET 8.0
+    version: '8.0.x'  # Specify the version compatible with .NET 8.0
 
 - script: dotnet restore
   displayName: 'Restore dependencies'
