@@ -34,5 +34,5 @@ steps:
   inputs:
     command: 'push'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
-    publishVstsFeed: 'nugetFinalProjFeed'
+    publishVstsFeed: '53c2aaf2-1e76-4942-90c6-2b5d7776c052'
     allowPackageConflicts: true
