@@ -27,25 +27,27 @@ steps:
   displayName: 'Run tests'
 
 
+
 - task: DotNetCoreCLI@2
+  displayName: 'Generate Nuget Version'
   inputs:
     command: pack
-    versioningScheme: byPrereleaseNumber
+    versioningScheme: byEnvVar
     majorVersion: '$(Major)'
     minorVersion: '$(Minor)'
     patchVersion: '$(Patch)'
 
 - task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact'
   inputs:
     pathToPublish: '$(Build.ArtifactStagingDirectory)'
     artifactName: 'drop'
     publishLocation: 'Container'
 
 - task: NuGetCommand@2
+  displayName: 'Push Nuget'
   inputs:
     command: 'push'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
     nuGetFeedType: 'internal'
     publishVstsFeed: '4dc3839c-a752-4ff1-94a4-daf1e4b39406/5817c3f7-52ab-48a7-9d23-dc3096ed18a0'
-    allowPackageConflicts: true  # Optional, allows pushing even if the package version already exists
-    continueOnError: false  # Optional, fails the pipeline if package push fails
