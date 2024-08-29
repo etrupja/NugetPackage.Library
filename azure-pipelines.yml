@@ -1,8 +1,3 @@
-variables:
-  Major: '5'
-  Minor: '0'
-  Patch: '0'
-
 trigger:
   branches:
     include:
@@ -10,6 +5,11 @@ trigger:
 
 pool:
   vmImage: 'windows-latest'
+
+variables:
+  Major: '7'
+  Minor: '0'
+  Patch: $[counter(variables['Build.SourceBranchName'], 0)]
 
 steps:
 - task: UseDotNet@2
@@ -26,21 +26,21 @@ steps:
 - script: dotnet test --no-build --verbosity normal
   displayName: 'Run tests'
 
-
 - task: DotNetCoreCLI@2
   inputs:
     command: 'pack'
     packagesToPack: '**/*.csproj'
     versioningScheme: 'byPrereleaseNumber'
-    majorVersion: '6'
-    minorVersion: '0'
-    patchVersion: '0'
+    majorVersion: '$(Major)'
+    minorVersion: '$(Minor)'
+    patchVersion: '$(Patch)'
+    buildProperties: 'PackageOutputPath=$(Build.ArtifactStagingDirectory)' # Specify output path
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
   inputs:
     pathToPublish: '$(Build.ArtifactStagingDirectory)'
-    artifactName: 'drop'
+    artifactName: 'drop_$(Build.BuildId)'  # Append Build ID to the artifact name to make it unique
     publishLocation: 'Container'
 
 - task: NuGetCommand@2
