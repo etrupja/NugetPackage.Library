@@ -27,15 +27,11 @@ steps:
   displayName: 'Run tests'
 
 
-
-- task: DotNetCoreCLI@2
-  displayName: 'Generate Nuget Version'
+- task: NuGetCommand@2
   inputs:
-    command: pack
-    versioningScheme: byEnvVar
-    majorVersion: '$(Major)'
-    minorVersion: '$(Minor)'
-    patchVersion: '$(Patch)'
+    command: 'pack'
+    packagesToPack: '**/*.csproj'
+    versioningScheme: 'byBuildNumber'
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
