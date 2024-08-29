@@ -6,7 +6,7 @@
 		<Nullable>enable</Nullable>
 		<Title>A MathHelper package</Title>
 		<Authors>Ervis Trupja</Authors>
-		<Version>4.0.2</Version>
+		<Version>4.0.3</Version>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	</PropertyGroup>
 
