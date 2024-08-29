@@ -39,3 +39,5 @@ steps:
     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
     nuGetFeedType: 'internal'
     publishVstsFeed: '4dc3839c-a752-4ff1-94a4-daf1e4b39406/5817c3f7-52ab-48a7-9d23-dc3096ed18a0'
+    allowPackageConflicts: true  # Optional, allows pushing even if the package version already exists
+    continueOnError: false  # Optional, fails the pipeline if package push fails
