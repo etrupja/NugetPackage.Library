@@ -22,10 +22,9 @@ steps:
   displayName: 'Run tests'
 
 - script: |
-    # Generate a version number based on build ID or timestamp
-    $version = "1.0.$(Build.BuildId)"
-    echo "##vso[task.setvariable variable=PackageVersion]$version"
-    dotnet pack --configuration Release --output $(Build.ArtifactStagingDirectory) /p:Version=$version
+    set version=1.0.%BUILD_BUILDID%
+    echo Version is %version%
+    dotnet pack --configuration Release --output $(Build.ArtifactStagingDirectory) /p:Version=%version%
   displayName: 'Package project'
 
 - task: PublishBuildArtifacts@1
