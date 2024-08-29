@@ -7,7 +7,7 @@ pool:
   vmImage: 'windows-latest'
 
 variables:
-  Major: '7'
+  Major: '5'
   Minor: '0'
   Patch: $[counter(variables['Build.SourceBranchName'], 0)]
 
@@ -30,10 +30,7 @@ steps:
   inputs:
     command: 'pack'
     packagesToPack: '**/*.csproj'
-    versioningScheme: 'byPrereleaseNumber'
-    majorVersion: '$(Major)'
-    minorVersion: '$(Minor)'
-    patchVersion: '$(Patch)'
+    packageVersion: '$(Major).$(Minor).$(Patch)'  # Set the exact version without suffix
     buildProperties: 'PackageOutputPath=$(Build.ArtifactStagingDirectory)' # Specify output path
 
 - task: PublishBuildArtifacts@1
