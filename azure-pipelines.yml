@@ -30,7 +30,7 @@ steps:
   inputs:
     command: 'pack'
     packagesToPack: '**/*.csproj'
-    versioningScheme: 'byPrereleaseNumber'
+    versioningScheme: 'off'  # Turn off automatic versioning scheme
     majorVersion: '$(Major)'
     minorVersion: '$(Minor)'
     patchVersion: '$(Patch)'
