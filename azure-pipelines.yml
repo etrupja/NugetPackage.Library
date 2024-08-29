@@ -1,5 +1,5 @@
 variables:
-  Major: '5'
+  Major: '7'
   Minor: '0'
   Patch: $[counter(variables['Build.SourceBranchName'], 0)]
 
