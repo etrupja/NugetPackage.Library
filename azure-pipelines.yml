@@ -1,7 +1,12 @@
+variables:
+  Major: '5'
+  Minor: '0'
+  Patch: '0'
+
 trigger:
   branches:
     include:
-      - main
+      - azure-pipelines
 
 pool:
   vmImage: 'windows-latest'
@@ -21,19 +26,25 @@ steps:
 - script: dotnet test --no-build --verbosity normal
   displayName: 'Run tests'
 
-- script: |
-    set version=1.0.%BUILD_BUILDID%
-    echo Version is %version%
-    dotnet pack --configuration Release --output $(Build.ArtifactStagingDirectory) /p:Version=%version%
-  displayName: 'Package project'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'pack'
+    packagesToPack: '**/*.csproj'
+    versioningScheme: 'byPrereleaseNumber'
+    majorVersion: '6'
+    minorVersion: '0'
+    patchVersion: '0'
 
 - task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact'
   inputs:
     pathToPublish: '$(Build.ArtifactStagingDirectory)'
     artifactName: 'drop'
     publishLocation: 'Container'
 
 - task: NuGetCommand@2
+  displayName: 'Push Nuget'
   inputs:
     command: 'push'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
