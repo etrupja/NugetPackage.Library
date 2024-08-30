@@ -1,35 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
 		<Title>A MathHelper package</Title>
 		<Authors>Ervis Trupja</Authors>
 		<Version>2.5.1</Version>
 		<PackageOutputPath>C:/Nuget/Packages</PackageOutputPath>
-
-		<DebugType>portable</DebugType>
-		<DebugSymbols>true</DebugSymbols>
-		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
-		<IncludeSymbols>true</IncludeSymbols>
-		<IncludeSource>true</IncludeSource>
 	</PropertyGroup>
-
-	<PropertyGroup>
-		<PublishRepositoryUrl>true</PublishRepositoryUrl>
-		<EmbedUntrackedSources>true</EmbedUntrackedSources>
-		<EnableSourceLink>true</EnableSourceLink>
-	</PropertyGroup>
-	
-	<PropertyGroup>
-		<Optimize>false</Optimize>
-	</PropertyGroup>
-
-	<ItemGroup>
-		<PackageReference Include="MathNet.Numerics" Version="5.0.0" />
-		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
-		  <PrivateAssets>all</PrivateAssets>
-		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
-	</ItemGroup>
-
 </Project>
