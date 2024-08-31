@@ -1,9 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
+		<PackageId>MathHelper.LL.Test</PackageId>
 		<TargetFramework>net8.0</TargetFramework>
 		<Title>A MathHelper package</Title>
 		<Authors>Ervis Trupja</Authors>
-		<Version>2.5.1</Version>
+		<Version>3.2.2</Version>
 		<PackageOutputPath>C:/Nuget/Packages</PackageOutputPath>
+
+		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="LICENSE.txt" Pack="true" PackagePath="\"></None>
+		<None Include="README.md" Pack="true" PackagePath="\"></None>
+	</ItemGroup>
+
+	<PropertyGroup>
+		<Optimize>false</Optimize>
 	</PropertyGroup>
 </Project>
