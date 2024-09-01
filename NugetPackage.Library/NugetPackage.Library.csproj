@@ -4,7 +4,7 @@
 		<TargetFramework>net8.0</TargetFramework>
 		<Title>A MathHelper package</Title>
 		<Authors>Ervis Trupja</Authors>
-		<Version>3.2.2</Version>
+		<Version>3.3.2</Version>
 		<PackageOutputPath>C:/Nuget/Packages</PackageOutputPath>
 
 		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
