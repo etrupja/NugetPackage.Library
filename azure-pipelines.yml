@@ -9,6 +9,12 @@ trigger:
 pool:
   vmImage: windows-latest
 
+variables:
+  Major: '4'
+  Minor: '4'
+  Patch: $[counter(variables['Build.SourceBranchName'], 0)]
+
+
 steps:
 - task: UseDotNet@2
   displayName: 'Define the .NET version'
@@ -26,9 +32,10 @@ steps:
     command: 'pack'
     packagesToPack: '**/*.csproj'
     versioningScheme: 'byPrereleaseNumber'
-    majorVersion: '1'
-    minorVersion: '0'
-    patchVersion: '$[counter(variables[''Build.SourceBranchName''], 0)]'
+
+    majorVersion: 'Major'
+    minorVersion: 'Minor'
+    patchVersion: 'Patch'
     
 - task: DotNetCoreCLI@2
   inputs:
