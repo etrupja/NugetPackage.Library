@@ -32,7 +32,6 @@ steps:
     command: 'pack'
     packagesToPack: '**/*.csproj'
     versioningScheme: 'byPrereleaseNumber'
-
     majorVersion: 'Major'
     minorVersion: 'Minor'
     patchVersion: 'Patch'
