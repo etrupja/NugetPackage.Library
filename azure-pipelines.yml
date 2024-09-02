@@ -1,0 +1,46 @@
+# ASP.NET
+# Build and test ASP.NET projects.
+# Add steps that publish symbols, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/apps/aspnet/build-aspnet-4
+
+trigger:
+- azure-nuget-pipeline
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  Major: '3'
+  Minor: '6'
+  Patch: $[counter(variables['Build.SourceBranchName'], 0)]
+
+steps:
+ - task: UseDotNet@2
+   displayName: 'Define the .NET version'
+   inputs:
+     packageType: 'sdk'
+     version: '8.0.x'
+
+ - task: DotNetCoreCLI@2
+   displayName: 'Building project'
+   inputs:
+    command: 'build'
+    arguments: '--configuration Release'
+
+ - task: DotNetCoreCLI@2
+   displayName: 'Packing the nuget package'
+   inputs:
+     command: 'pack'
+     packagesToPack: '**/*.csproj'
+     versioningScheme: 'byPrereleaseNumber'
+     majorVersion: $(Major)
+     minorVersion: $(Minor)
+     patchVersion: $(Patch)
+
+ - task: DotNetCoreCLI@2
+   displayName: 'Pushing the nuget package'
+   inputs:
+    command: 'push'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+    nuGetFeedType: 'internal'
+    publishVstsFeed: 'e286cded-b4ed-4a9a-a686-3c4ae83dd64b/978da6cf-357e-4d69-b3f2-3fb528d68964'
