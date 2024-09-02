@@ -1,0 +1,35 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master-pipelines-final-test
+
+pool:
+  vmImage: windows-latest
+
+steps:
+- task: UseDotNet@2
+  displayName: 'Define the .NET version'
+  inputs:
+    packageType: 'sdk'
+    version: '8.0.x'
+- task: DotNetCoreCLI@2
+  displayName: 'Building project'
+  inputs:
+    command: 'build'
+    arguments: '--configuration Release'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'pack'
+    packagesToPack: '**/*.csproj'
+    versioningScheme: 'off'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'push'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+    nuGetFeedType: 'internal'
+    publishVstsFeed: 'e286cded-b4ed-4a9a-a686-3c4ae83dd64b/978da6cf-357e-4d69-b3f2-3fb528d68964'
