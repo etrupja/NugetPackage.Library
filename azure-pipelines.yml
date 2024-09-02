@@ -32,9 +32,9 @@ steps:
     command: 'pack'
     packagesToPack: '**/*.csproj'
     versioningScheme: 'byPrereleaseNumber'
-    majorVersion: 'Major'
-    minorVersion: 'Minor'
-    patchVersion: 'Patch'
+    majorVersion: $(Major)
+    minorVersion: $(Minor)
+    patchVersion: $(Patch)
     
 - task: DotNetCoreCLI@2
   inputs:
